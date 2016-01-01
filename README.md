@@ -31,7 +31,8 @@ Some useful tips to help you get started:
 Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
 
 I inlined the css.
-I added a script that add the css for the google font after the page has loaded. 
+
+I added a script that adds the css for the google font after the page has loaded. 
 
 ####Part 2: Optimize Frames per Second in pizza.html
 
