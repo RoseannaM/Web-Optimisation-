@@ -1,0 +1,9 @@
+{
+  "firebase": "web-optimisation",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

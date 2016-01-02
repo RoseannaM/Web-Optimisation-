@@ -1,3 +1,5 @@
+"use strict"; // I choose to make this global as it seems unnecessary to add it to each function.
+
 /*
 Welcome to the 60fps project! Your goal is to make Cam's Pizzeria website run
 jank-free at 60 frames per second.
@@ -18,6 +20,7 @@ cameron *at* udacity *dot* com
 
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
+
 var pizzaIngredients = {};
 pizzaIngredients.meats = [
   "Pepperoni",
@@ -406,13 +409,13 @@ var resizePizzas = function(size) {
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        document.getElementById("pizzaSize").innerHTML = "Small"; // Changed all instances of document.querySelector to getElementById.
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        document.getElementById("pizzaSize").innerHTML = "Medium";
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        document.getElementById("pizzaSize").innerHTML = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -424,7 +427,7 @@ var resizePizzas = function(size) {
    // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
   function determineDx (elem, size) {
     var oldWidth = elem.offsetWidth;
-    var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
+    var windowWidth = document.getElementById("randomPizzas").offsetWidth;
     var oldSize = oldWidth / windowWidth;
 
     // TODO: change to 3 sizes? no more xl?
@@ -449,11 +452,15 @@ var resizePizzas = function(size) {
   }
 
   // Iterates through pizza elements on the page and changes their widths
+  //Changed all instances of document.querySelector to getElementByClassName.
+  // put the array length in a variable at the start of the for loop so it would not calculate during each iteration.
+  //made the container var so it would no longer fetch HTML from the DOM with each iteration.
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+    var container = document.getElementsByClassName('randomPizzaContainer');
+    for (var i = 0, len = container.length; i < len; i++) {
+      var dx = determineDx(container[i], size);
+      var newwidth = (container[i].offsetWidth + dx) + 'px';
+      container[i].style.width = newwidth;
     }
   }
 
@@ -506,7 +513,7 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
 
-  for (var i = 0; i < pizzas.length; i++) {
+  for (var i = 0, len = pizzas.length; i < len; i++) {// put the array length in a variable at the start of the for loop so it would not calculate during each iteration.
     var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
     pizzas[i].style.left = pizzas[i].basicLeft + 100 * phase + 'px';
   }
