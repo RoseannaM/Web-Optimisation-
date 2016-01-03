@@ -49,4 +49,5 @@ Put the array length in a variable at the start of the for loop so it would not 
 
 Created a container var so it would no longer fetch HTML from the DOM during each iteration.
 
+Took the dx and the newwidth variables outside of the for loop as they only need to be calculated once. 
 
