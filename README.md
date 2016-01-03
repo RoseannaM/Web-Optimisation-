@@ -24,11 +24,29 @@
 ##Optimizations Preformed
 
 ####Part 1: Optimize PageSpeed Insights score for index.html
-I inlined the css.
 
-I added a script that adds the css for the google font after the page has loaded. 
+Inlined the css.
+
+Optimized the images for web. Resized them and compressed them.
+
+Used the Web Font Loader script to avoid the font blocking the page.
 
 ####Part 2: Optimize Frames per Second in pizza.html
 
-I changed the number of pizza images being rendered from 200 to 34.This had a significant impact on the fps.
-The pizzeria image was unnecessarily large so I resized it and optimised it for the web.
+Changed the number of pizza images being rendered from 200 to 34.This had a significant impact on the fps.
+
+Resized and optimised the pizzeria image as it was unnecessarily large.
+
+Implemented _Use Strict_
+
+Changed all instances of document.querySelector to getElementById.
+
+Changed all instances of document.querySelectorAll to getElementByClassName.
+
+####Part 3: Optimize Frames per Second for the Pizza resize time in pizza.html.
+
+Put the array length in a variable at the start of the for loop so it would not calculate during each iteration.
+
+Created a container var so it would no longer fetch HTML from the DOM during each iteration.
+
+

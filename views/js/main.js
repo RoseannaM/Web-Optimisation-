@@ -457,8 +457,8 @@ var resizePizzas = function(size) {
   //made the container var so it would no longer fetch HTML from the DOM with each iteration.
   function changePizzaSizes(size) {
     var container = document.getElementsByClassName('randomPizzaContainer');
+    var dx = determineDx(container[0], size);
     for (var i = 0, len = container.length; i < len; i++) {
-      var dx = determineDx(container[i], size);
       var newwidth = (container[i].offsetWidth + dx) + 'px';
       container[i].style.width = newwidth;
     }
